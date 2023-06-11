@@ -79,5 +79,28 @@ namespace SkillFactory.Module16TestsViaNUnit.Tests
             int actual = testCalculator.Miltiplication(a, b);
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        [TestCase(6, 3, 2)]
+        [TestCase(6, 5, 1)]
+        [TestCase(0, 1, 0)]
+        [TestCase(10, 2, 5)]
+        [TestCase(10, -2, -5)]
+        [TestCase(0, 5, 0)]
+        [TestCase(5, 2, 2)]
+        [TestCase(int.MaxValue, 1, int.MaxValue)]
+        [TestCase(int.MinValue + 1, -1, int.MaxValue)]
+        [TestCase(int.MaxValue, int.MinValue, 0)]
+        [TestCase(int.MinValue, int.MinValue, 1)]
+        [TestCase(20, 10, 2)]
+        [TestCase(-10, -10, 1)]
+        [TestCase(int.MaxValue, int.MaxValue, 1)]
+        [TestCase(int.MinValue, int.MaxValue, -1)]
+        public void DivisionMustReturnCorrectValue(int a, int b, int expected)
+        {
+            Calculator testCalculator = new Calculator();
+            int actual = testCalculator.Division(a, b);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
