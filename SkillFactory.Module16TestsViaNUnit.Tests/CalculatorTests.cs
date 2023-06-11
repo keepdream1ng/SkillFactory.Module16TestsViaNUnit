@@ -32,7 +32,7 @@ namespace SkillFactory.Module16TestsViaNUnit.Tests
         public void AdditionalMustReturnCorrectValue(int a, int b, int expected)
         {
             // To the mentor: Правильно ли, что для каждого testCase 
-            // создается новый класс Калькулятор, лучше ли в нашем случае
+            // создается новый объект Калькулятор, лучше ли в нашем случае
             // пользоваться одним экземпляром объекта во всех тестах?
             Calculator testCalculator = new Calculator();
             int actual = testCalculator.Additional(a, b);
