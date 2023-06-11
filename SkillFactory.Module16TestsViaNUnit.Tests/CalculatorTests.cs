@@ -3,15 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SkillFactory.Module16TestsViaNUnit;
 
 namespace SkillFactory.Module16TestsViaNUnit.Tests
 {
     [TestFixture]
     public class CalculatorTests
     {
-        public void Test1()
+        [Test]
+        [TestCase(1, 2, 3)]
+        [TestCase(1, -2, -1)]
+        [TestCase(-1, 2, 1)]
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 5, 5)]
+        [TestCase(10, 0, 10)]
+        [TestCase(-5, 5, 0)]
+        [TestCase(5, -5, 0)]
+        [TestCase(int.MaxValue, 1, int.MinValue)]
+        [TestCase(int.MinValue, -1, int.MaxValue)]
+        [TestCase(int.MaxValue, int.MinValue, -1)]
+        [TestCase(int.MinValue, int.MinValue, 0)]
+        [TestCase(10, 10, 20)]
+        [TestCase(-10, -10, -20)]
+        [TestCase(0, int.MaxValue, int.MaxValue)]
+        [TestCase(0, int.MinValue, int.MinValue)]
+        [TestCase(int.MaxValue, -1, int.MaxValue - 1)]
+        [TestCase(int.MinValue, 1, int.MinValue + 1)]
+        public void AdditionalMustReturnCorrectValue(int a, int b, int expected)
         {
-            Assert.True(true);
+            Calculator testCalculator = new Calculator();
+            int actual = testCalculator.Additional(a, b);
+            Assert.That(actual, Is.EqualTo(expected));
         }
+
+        //[Test]
+        //[TestCase( 1, 2, 3)]
+        //[TestCase( 1, -2, -1)]
+        //[TestCase( -1, 2, 1)]
+        //// Overflow scenario.
+        //[TestCase( int.MaxValue, 1, int.MinValue)]
+        //public void AdditionalMustReturnCorrectValue(int a, int b, int expected)
+        //{
+        //    Calculator testCalculator = new Calculator();
+        //    int actual = testCalculator.Additional(a, b);
+        //    Assert.That(actual, Is.EqualTo(expected));
+        //}
     }
 }
