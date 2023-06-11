@@ -102,5 +102,12 @@ namespace SkillFactory.Module16TestsViaNUnit.Tests
             int actual = testCalculator.Division(a, b);
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void DivisionMustReturnErrorForDivByZero()
+        {
+            Calculator testCalculator = new Calculator();
+            Assert.Throws<DivideByZeroException>(() => testCalculator.Division(1, 0));
+        }
     }
 }
